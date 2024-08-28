@@ -1,5 +1,3 @@
-console.log("success");
-
 
 const container= document.querySelector(".container")
 const search= document.querySelector(".search-box button")
@@ -7,12 +5,13 @@ const weatherBox= document.querySelector(".weather-box")
 const weatherDetails= document.querySelector(".weather-details")
 const error404= document.querySelector(".not-found")
 const cityHide= document.querySelector(".city-hide")
+const input = document.querySelector('.search-box input');
 
-search.addEventListener('click',()=>{
+const performSearch = () => {
 
-    const city = document.querySelector('.search-box input').value;
+
+    const city = input.value;
     
-
     if(city=='')
         return;
 
@@ -21,6 +20,10 @@ search.addEventListener('click',()=>{
     .then(json => {
         
         if (json.cod == '404'){
+            const connectionError= document.querySelector(".not-found p")
+            const Errorimage= document.querySelector(".not-found img")
+            Errorimage.src = "images/404.png";
+            connectionError.innerHTML= "<p>Oops! Location not found!</p>"
             cityHide.textContent = city;
             container.style.height= '400px'
             weatherBox.classList.remove('active')
@@ -44,10 +47,10 @@ search.addEventListener('click',()=>{
         else{
             cityHide.textContent=city;
             container.style.height= '555px'
-        container.classList.add('active')
-        weatherBox.classList.add('active')
-        weatherDetails.classList.add('active')
-        error404.classList.remove('active')
+            container.classList.add('active')
+            weatherBox.classList.add('active')
+            weatherDetails.classList.add('active')
+            error404.classList.remove('active')
 
         setTimeout(() => {
             container.classList.remove('active')
@@ -110,7 +113,6 @@ search.addEventListener('click',()=>{
                 image.src = isDay ? 'images/day/cloud.png' : 'images/night/cloud.png';
                 break;
 
-    
         }
 
         cityName.innerHTML=`${json.name}, ${json.sys.country}`
@@ -142,7 +144,7 @@ search.addEventListener('click',()=>{
             infoWeather.insertAdjacentElement("afterend",elCloneInfoWeather)
             infoHumidity.insertAdjacentElement("afterend",elCloneInfoHumidity)
             infoWind.insertAdjacentElement("afterend",elCloneInfoWind)
-           }, 2200);
+        }, 2200);
 
             
        const cloneInfoWeather = document.querySelectorAll('.info-weather.active-clone')
@@ -178,11 +180,36 @@ search.addEventListener('click',()=>{
         Errorimage.src = "images/connection-lost.png";
         connectionError.innerHTML= "<p>Connection Lost!!</p><p>Please Check Your Internet Connection and Try Again</p>"
         cityHide.textContent = city;
-            container.style.height= '450px'
-            weatherBox.classList.remove('active')
-            weatherDetails.classList.remove('active')
-            error404.classList.add('active')
-            return;
+        container.style.height= '450px'
+        weatherBox.classList.remove('active')
+        weatherDetails.classList.remove('active')
+        error404.classList.add('active')
+        return;
         
     })
-})
+}
+
+
+// Search button click event
+search.addEventListener('click', performSearch);
+
+// Enter key press event
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+});
+
+
+const preloadImages = () => {
+    const images = [
+        'images/404.png',
+        'images/connection-lost.png'
+    ];
+    images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+};
+
+window.onload = preloadImages;

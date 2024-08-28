@@ -12,11 +12,9 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* background: url('images/background.jpg'); */
     background: url('images/background2.jpg');
     /* background: url('https://t4.ftcdn.net/jpg/05/73/36/69/360_F_573366927_pdNkVAuC4wNldjYn6lbmuUDidXaqERPB.jpg'); */
     /* background: url('https://cdn.wallpaperhub.app/cloudcache/6/c/2/9/3/d/6c293dcd19ad1ac65056563d9462a5967557c90e.jpg'); */
-    /* background: url('https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?cs=srgb&dl=pexels-veeterzy-114979.jpg&fm=jpg'); */
     background-size: cover;
     background-position: bottom;
     overflow: hidden;
@@ -32,12 +30,10 @@ body{
     border-radius: 16px;
     padding: 20px;
     margin: 0 8px;
-color: #fff;
+    color: #fff;
 
-height: 100px;
-transition: height .6s ease;
-
-
+    height: 100px;
+    transition: height .6s ease;
 }
 
 form{
@@ -142,10 +138,10 @@ form{
 .weather-box .temperature{
     position: relative;
 
-font-size: 64px;
-line-height: 1;
-font-weight: 700;
-margin: 2px 0 6px -30px;
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 700;
+    margin: 2px 0 6px -30px;
 
 }
 .weather-box .temperature span{
@@ -179,11 +175,11 @@ margin: 2px 0 6px -30px;
 
 .weather-details .humidity,
 .weather-details .wind{
-display: flex;
-align-items: center;
-width: 50%;
+    display: flex;
+    align-items: center;
+    width: 50%;
 
-transform: translateY(-100%);
+    transform: translateY(-100%);
 }
 
 .weather-details.active .humidity,
@@ -195,8 +191,8 @@ transform: translateY(-100%);
 }
 
 .weather-details .humidity .info-humidity,.weather-details .wind .info-wind {
-transform:translateY(-100%) ;
-overflow: hidden;
+    transform:translateY(-100%) ;
+    overflow: hidden;
 }
 
 .weather-details .humidity{
@@ -237,7 +233,7 @@ overflow: hidden;
 }
 
 .not-found img{
-width: 65%;
+    width: 65%;
 }
 
 .not-found p {
@@ -277,8 +273,8 @@ width: 65%;
 
 #clone-info-humidity span,
 #clone-info-wind span {
-transform: translateY(100%);
-transition: transform 1s ease;
+    transform: translateY(100%);
+    transition: transform 1s ease;
 }
 
 .active-clone#clone-info-humidity span,
@@ -305,7 +301,9 @@ footer{
 
     .container{
         width: 360px;
+        margin-top: -30px;
     }
+
     .weather-details span{
         margin-bottom: 2px;
     }
