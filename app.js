@@ -6,6 +6,12 @@ const https = require("https");
 const bodyParser = require("body-parser")
 const path = require('path');
 
+// Using dynamic import for `node-fetch`
+let fetch;
+(async () => {
+    fetch = (await import('node-fetch')).default;
+})();
+
 const app = express();
 
 app.use(bodyParser.urlencoded({extended:true}))
